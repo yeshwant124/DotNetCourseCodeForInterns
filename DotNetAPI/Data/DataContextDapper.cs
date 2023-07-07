@@ -22,7 +22,7 @@ namespace DotNetAPI.Data
         public T LoadDataSingle<T>(string sql)
         {
             IDbConnection connection = new SqlConnection(_config.GetConnectionString("DefaultConnection"));            
-            return connection.QuerySingle<T>(sql);
+            return connection.QuerySingleOrDefault<T>(sql);
         }
 
         public bool ExecuteSql(string sql)

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "NU8t1DOM3ElMVWWuIuriiEjGIEYVY2vSTs6DSAt9K/Kn14o5KNLnE3fhM4FCb+SpFnqewTBwnKaF6ZMBBHQifw==",
+  "dgSpecHash": "phoJiJT44vXUkkfyVA/e/DbPXcV5SFuEXskjBrXn1ugxhw7/mfqUmN2IXZSvIaKbwJtei2peEppATHxxiq/gXQ==",
   "success": true,
-  "projectFilePath": "D:\\IDS Project\\Training for BITS Pilani Students\\course-code\\WebAPI\\DotNetAPIIntermediate\\DotNetAPIIntermediate.csproj",
+  "projectFilePath": "D:\\IDS Project\\Training for BITS Pilani Students\\course-code\\ConsoleApps\\DotNetAPIIntermediate\\DotNetAPIIntermediate.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\yeshwant.k\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\yeshwant.k\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",

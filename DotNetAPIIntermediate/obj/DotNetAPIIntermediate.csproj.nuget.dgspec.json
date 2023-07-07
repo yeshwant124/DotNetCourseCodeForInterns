@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\IDS Project\\Training for BITS Pilani Students\\course-code\\WebAPI\\DotNetAPIIntermediate\\DotNetAPIIntermediate.csproj": {}
+    "D:\\IDS Project\\Training for BITS Pilani Students\\course-code\\ConsoleApps\\DotNetAPIIntermediate\\DotNetAPIIntermediate.csproj": {}
   },
   "projects": {
-    "D:\\IDS Project\\Training for BITS Pilani Students\\course-code\\WebAPI\\DotNetAPIIntermediate\\DotNetAPIIntermediate.csproj": {
+    "D:\\IDS Project\\Training for BITS Pilani Students\\course-code\\ConsoleApps\\DotNetAPIIntermediate\\DotNetAPIIntermediate.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\IDS Project\\Training for BITS Pilani Students\\course-code\\WebAPI\\DotNetAPIIntermediate\\DotNetAPIIntermediate.csproj",
+        "projectUniqueName": "D:\\IDS Project\\Training for BITS Pilani Students\\course-code\\ConsoleApps\\DotNetAPIIntermediate\\DotNetAPIIntermediate.csproj",
         "projectName": "DotNetAPIIntermediate",
-        "projectPath": "D:\\IDS Project\\Training for BITS Pilani Students\\course-code\\WebAPI\\DotNetAPIIntermediate\\DotNetAPIIntermediate.csproj",
+        "projectPath": "D:\\IDS Project\\Training for BITS Pilani Students\\course-code\\ConsoleApps\\DotNetAPIIntermediate\\DotNetAPIIntermediate.csproj",
         "packagesPath": "C:\\Users\\yeshwant.k\\.nuget\\packages\\",
-        "outputPath": "D:\\IDS Project\\Training for BITS Pilani Students\\course-code\\WebAPI\\DotNetAPIIntermediate\\obj\\",
+        "outputPath": "D:\\IDS Project\\Training for BITS Pilani Students\\course-code\\ConsoleApps\\DotNetAPIIntermediate\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\yeshwant.k\\AppData\\Roaming\\NuGet\\NuGet.Config",

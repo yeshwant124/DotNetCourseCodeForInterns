@@ -7,8 +7,7 @@ namespace DotNetAPIIntermediate.Data
 {
     public class UserRepository: IUserRepository
     {
-        private DataContextEF _entityFramework;
-        
+        private DataContextEF _entityFramework;        
 
         public UserRepository(IConfiguration config)
         {
