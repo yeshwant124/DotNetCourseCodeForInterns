@@ -1,0 +1,15 @@
+D:\IDS Project\Training for BITS Pilani Students\course-code\ConsoleApps\FileReadWrite\FileReadWrite\bin\Debug\net7.0\FileReadWrite.exe
+D:\IDS Project\Training for BITS Pilani Students\course-code\ConsoleApps\FileReadWrite\FileReadWrite\bin\Debug\net7.0\FileReadWrite.deps.json
+D:\IDS Project\Training for BITS Pilani Students\course-code\ConsoleApps\FileReadWrite\FileReadWrite\bin\Debug\net7.0\FileReadWrite.runtimeconfig.json
+D:\IDS Project\Training for BITS Pilani Students\course-code\ConsoleApps\FileReadWrite\FileReadWrite\bin\Debug\net7.0\FileReadWrite.dll
+D:\IDS Project\Training for BITS Pilani Students\course-code\ConsoleApps\FileReadWrite\FileReadWrite\bin\Debug\net7.0\FileReadWrite.pdb
+D:\IDS Project\Training for BITS Pilani Students\course-code\ConsoleApps\FileReadWrite\FileReadWrite\obj\Debug\net7.0\FileReadWrite.csproj.AssemblyReference.cache
+D:\IDS Project\Training for BITS Pilani Students\course-code\ConsoleApps\FileReadWrite\FileReadWrite\obj\Debug\net7.0\FileReadWrite.GeneratedMSBuildEditorConfig.editorconfig
+D:\IDS Project\Training for BITS Pilani Students\course-code\ConsoleApps\FileReadWrite\FileReadWrite\obj\Debug\net7.0\FileReadWrite.AssemblyInfoInputs.cache
+D:\IDS Project\Training for BITS Pilani Students\course-code\ConsoleApps\FileReadWrite\FileReadWrite\obj\Debug\net7.0\FileReadWrite.AssemblyInfo.cs
+D:\IDS Project\Training for BITS Pilani Students\course-code\ConsoleApps\FileReadWrite\FileReadWrite\obj\Debug\net7.0\FileReadWrite.csproj.CoreCompileInputs.cache
+D:\IDS Project\Training for BITS Pilani Students\course-code\ConsoleApps\FileReadWrite\FileReadWrite\obj\Debug\net7.0\FileReadWrite.dll
+D:\IDS Project\Training for BITS Pilani Students\course-code\ConsoleApps\FileReadWrite\FileReadWrite\obj\Debug\net7.0\refint\FileReadWrite.dll
+D:\IDS Project\Training for BITS Pilani Students\course-code\ConsoleApps\FileReadWrite\FileReadWrite\obj\Debug\net7.0\FileReadWrite.pdb
+D:\IDS Project\Training for BITS Pilani Students\course-code\ConsoleApps\FileReadWrite\FileReadWrite\obj\Debug\net7.0\FileReadWrite.genruntimeconfig.cache
+D:\IDS Project\Training for BITS Pilani Students\course-code\ConsoleApps\FileReadWrite\FileReadWrite\obj\Debug\net7.0\ref\FileReadWrite.dll

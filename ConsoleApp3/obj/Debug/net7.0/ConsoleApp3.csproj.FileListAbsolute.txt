@@ -1,0 +1,15 @@
+D:\IDS Project\Training for BITS Pilani Students\course-code\ConsoleApps\ConsoleApp3\bin\Debug\net7.0\ConsoleApp3.exe
+D:\IDS Project\Training for BITS Pilani Students\course-code\ConsoleApps\ConsoleApp3\bin\Debug\net7.0\ConsoleApp3.deps.json
+D:\IDS Project\Training for BITS Pilani Students\course-code\ConsoleApps\ConsoleApp3\bin\Debug\net7.0\ConsoleApp3.runtimeconfig.json
+D:\IDS Project\Training for BITS Pilani Students\course-code\ConsoleApps\ConsoleApp3\bin\Debug\net7.0\ConsoleApp3.dll
+D:\IDS Project\Training for BITS Pilani Students\course-code\ConsoleApps\ConsoleApp3\bin\Debug\net7.0\ConsoleApp3.pdb
+D:\IDS Project\Training for BITS Pilani Students\course-code\ConsoleApps\ConsoleApp3\obj\Debug\net7.0\ConsoleApp3.csproj.AssemblyReference.cache
+D:\IDS Project\Training for BITS Pilani Students\course-code\ConsoleApps\ConsoleApp3\obj\Debug\net7.0\ConsoleApp3.GeneratedMSBuildEditorConfig.editorconfig
+D:\IDS Project\Training for BITS Pilani Students\course-code\ConsoleApps\ConsoleApp3\obj\Debug\net7.0\ConsoleApp3.AssemblyInfoInputs.cache
+D:\IDS Project\Training for BITS Pilani Students\course-code\ConsoleApps\ConsoleApp3\obj\Debug\net7.0\ConsoleApp3.AssemblyInfo.cs
+D:\IDS Project\Training for BITS Pilani Students\course-code\ConsoleApps\ConsoleApp3\obj\Debug\net7.0\ConsoleApp3.csproj.CoreCompileInputs.cache
+D:\IDS Project\Training for BITS Pilani Students\course-code\ConsoleApps\ConsoleApp3\obj\Debug\net7.0\ConsoleApp3.dll
+D:\IDS Project\Training for BITS Pilani Students\course-code\ConsoleApps\ConsoleApp3\obj\Debug\net7.0\refint\ConsoleApp3.dll
+D:\IDS Project\Training for BITS Pilani Students\course-code\ConsoleApps\ConsoleApp3\obj\Debug\net7.0\ConsoleApp3.pdb
+D:\IDS Project\Training for BITS Pilani Students\course-code\ConsoleApps\ConsoleApp3\obj\Debug\net7.0\ConsoleApp3.genruntimeconfig.cache
+D:\IDS Project\Training for BITS Pilani Students\course-code\ConsoleApps\ConsoleApp3\obj\Debug\net7.0\ref\ConsoleApp3.dll

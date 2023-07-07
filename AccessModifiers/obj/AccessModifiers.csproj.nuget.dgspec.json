@@ -1,0 +1,63 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\IDS Project\\Training for BITS Pilani Students\\course-code\\ConsoleApps\\AccessModifiers\\AccessModifiers.csproj": {}
+  },
+  "projects": {
+    "D:\\IDS Project\\Training for BITS Pilani Students\\course-code\\ConsoleApps\\AccessModifiers\\AccessModifiers.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\IDS Project\\Training for BITS Pilani Students\\course-code\\ConsoleApps\\AccessModifiers\\AccessModifiers.csproj",
+        "projectName": "AccessModifiers",
+        "projectPath": "D:\\IDS Project\\Training for BITS Pilani Students\\course-code\\ConsoleApps\\AccessModifiers\\AccessModifiers.csproj",
+        "packagesPath": "C:\\Users\\yeshwant.k\\.nuget\\packages\\",
+        "outputPath": "D:\\IDS Project\\Training for BITS Pilani Students\\course-code\\ConsoleApps\\AccessModifiers\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\yeshwant.k\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
