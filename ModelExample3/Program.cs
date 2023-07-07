@@ -196,53 +196,53 @@ namespace ModelExample3
 
 
             //JSON Concepts
-            string computersJson = File.ReadAllText("Computers.json");
-            //DataContextDapper dapper = new DataContextDapper(config);
-            DataContextEF entityframework = new DataContextEF(config);
+            //string computersJson = File.ReadAllText("Computers.json");
+            ////DataContextDapper dapper = new DataContextDapper(config);
+            //DataContextEF entityframework = new DataContextEF(config);
 
-            JsonSerializerOptions options = new JsonSerializerOptions()
-            {
-                PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
-            };
-            IEnumerable<Computer>? computersSystem = System.Text.Json.JsonSerializer.Deserialize<IEnumerable<Computer>>(computersJson,options);
-            IEnumerable<Computer>? computersNewtonsoft = JsonConvert.DeserializeObject<IEnumerable<Computer>>(computersJson);
+            //JsonSerializerOptions options = new JsonSerializerOptions()
+            //{
+            //    PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+            //};
+            //IEnumerable<Computer>? computersSystem = System.Text.Json.JsonSerializer.Deserialize<IEnumerable<Computer>>(computersJson,options);
+            //IEnumerable<Computer>? computersNewtonsoft = JsonConvert.DeserializeObject<IEnumerable<Computer>>(computersJson);
 
-            if (computersNewtonsoft != null)
-            {
-                foreach (Computer comp in computersNewtonsoft)
-                {                    
-                    Computer computer = new Computer()
-                    {
-                        MotherBoard = comp.MotherBoard,
-                        CPUCores = comp.CPUCores,
-                        HasWifi = comp.HasWifi,
-                        HasLTE = comp.HasLTE,
-                        ReleaseDate = comp.ReleaseDate,
-                        Price = comp.Price,
-                        VideoCard = comp.VideoCard,
-                    };
-                    entityframework.Add(computer);
-                    entityframework.SaveChanges();                   
+            //if (computersNewtonsoft != null)
+            //{
+            //    foreach (Computer comp in computersNewtonsoft)
+            //    {                    
+            //        Computer computer = new Computer()
+            //        {
+            //            MotherBoard = comp.MotherBoard,
+            //            CPUCores = comp.CPUCores,
+            //            HasWifi = comp.HasWifi,
+            //            HasLTE = comp.HasLTE,
+            //            ReleaseDate = comp.ReleaseDate,
+            //            Price = comp.Price,
+            //            VideoCard = comp.VideoCard,
+            //        };
+            //        entityframework.Add(computer);
+            //        entityframework.SaveChanges();                   
 
-                }
-            }
+            //    }
+            //}
 
-            List<Computer> computers = entityframework.computer.ToList<Computer>();
+            //List<Computer> computers = entityframework.computer.ToList<Computer>();
 
-            if (computers != null)
-            {
-                Console.WriteLine("ComputerId | MotherBoard | CPUCores | HasLTE | HasWiFi | ReleaseDate | Price| VideoCard");
-                foreach (Computer comp in computers)
-                {
-                    Console.WriteLine(comp.ComputerId + "|" + comp.MotherBoard + "|" + comp.CPUCores + "|" + comp.HasLTE + "|" + comp.HasWifi + "|" + comp.ReleaseDate
-                              + "|" + comp.Price + "|" + comp.VideoCard);
-                }
-            }
+            //if (computers != null)
+            //{
+            //    Console.WriteLine("ComputerId | MotherBoard | CPUCores | HasLTE | HasWiFi | ReleaseDate | Price| VideoCard");
+            //    foreach (Computer comp in computers)
+            //    {
+            //        Console.WriteLine(comp.ComputerId + "|" + comp.MotherBoard + "|" + comp.CPUCores + "|" + comp.HasLTE + "|" + comp.HasWifi + "|" + comp.ReleaseDate
+            //                  + "|" + comp.Price + "|" + comp.VideoCard);
+            //    }
+            //}
 
-            JsonSerializerSettings serializerSettings = new JsonSerializerSettings()
-            {
-                ContractResolver = new CamelCasePropertyNamesContractResolver(),
-            };
+            //JsonSerializerSettings serializerSettings = new JsonSerializerSettings()
+            //{
+            //    ContractResolver = new CamelCasePropertyNamesContractResolver(),
+            //};
 
             //string computersCopyNewtonsoft = JsonConvert.SerializeObject(computersJson, serializerSettings);
             //File.WriteAllText("computersCopyNewtonSoft.txt", "\n" + computersCopyNewtonsoft + "\n");
@@ -253,7 +253,7 @@ namespace ModelExample3
 
             //Model Mapping
             //1. AutoMapper
-            //string computersJson = File.ReadAllText("ComputersSnake.json");
+            //string computersjson = File.ReadAllText("computerssnake.json");
             //Mapper mapper = new Mapper(new MapperConfiguration((cfg) => cfg.CreateMap<ComputersSnake, Computer>()
             //        .ForMember(destination => destination.ComputerId, options => options.MapFrom(source => source.computer_id))
             //        .ForMember(destination => destination.MotherBoard, options => options.MapFrom(source => source.motherboard))
@@ -264,30 +264,30 @@ namespace ModelExample3
             //        .ForMember(destination => destination.VideoCard, options => options.MapFrom(source => source.video_card))
             //));
 
-            //IEnumerable<ComputersSnake>? computersAutoMapper = System.Text.Json.JsonSerializer.Deserialize<IEnumerable<ComputersSnake>>(computersJson);
+            //IEnumerable<ComputersSnake>? computersautomapper = System.Text.Json.JsonSerializer.Deserialize<IEnumerable<ComputersSnake>>(computersjson);
 
-            //if (computersAutoMapper != null)
+            //if (computersautomapper != null)
             //{
-            //    IEnumerable<Computer> computerResult = mapper.Map<IEnumerable<Computer>>(computersAutoMapper);                
-            //    foreach (Computer computer in computerResult)
+            //    IEnumerable<Computer> computerresult = mapper.Map<IEnumerable<Computer>>(computersautomapper);
+            //    foreach (Computer computer in computerresult)
             //    {
             //        Console.WriteLine(computer.MotherBoard);
             //    }
             //}
 
             //2. JsonPropertyName attribute
-            //string computersJson = File.ReadAllText("ComputersSnake.json");
-            //IEnumerable<Computer>? computersJsonPropertyMapping = System.Text.Json.JsonSerializer.Deserialize<IEnumerable<Computer>>(computersJson);
-            //if (computersJsonPropertyMapping != null)
-            //{
-            //    Console.WriteLine("computer_id  |   motherboard |   has_wifi |   has_lte |   release_date   |   video_card  |   cpu_cores   |   price");
-            //    foreach (Computer comp in computersJsonPropertyMapping)
-            //    {
-            //        Console.WriteLine(comp.ComputerId + "|" + comp.MotherBoard + "|" + comp.HasWifi + "|" + comp.HasLTE + "|" + comp.ReleaseDate + "|" +
-            //            comp.VideoCard + "|" + comp.CPUCores + "|" + comp.Price);
-            //    }         
+            string computersJson = File.ReadAllText("ComputersSnake.json");
+            IEnumerable<Computer>? computersJsonPropertyMapping = System.Text.Json.JsonSerializer.Deserialize<IEnumerable<Computer>>(computersJson);
+            if (computersJsonPropertyMapping != null)
+            {
+                Console.WriteLine("computer_id  |   motherboard |   has_wifi |   has_lte |   release_date   |   video_card  |   cpu_cores   |   price");
+                foreach (Computer comp in computersJsonPropertyMapping)
+                {
+                    Console.WriteLine(comp.ComputerId + "|" + comp.MotherBoard + "|" + comp.HasWifi + "|" + comp.HasLTE + "|" + comp.ReleaseDate + "|" +
+                        comp.VideoCard + "|" + comp.CPUCores + "|" + comp.Price);
+                }
 
-            //}
+            }
         }
 
         private static string EscapeSingleQuote(string input)

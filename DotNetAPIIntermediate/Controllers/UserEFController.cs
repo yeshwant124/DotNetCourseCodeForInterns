@@ -90,51 +90,51 @@ namespace DotNetAPI.Controllers
             return userSalaries;
         }
 
-        [HttpGet("GetUserSalary/{userid}")]
-        public UserSalary GetUserSalary(int userid)
+        [HttpGet("UserSalary/{userid}")]
+        public UserSalary GetSingleUserSalaryEF(int userid)
         {
             UserSalary? userSalary = _userRepository.GetUserSalary(userid);          
             return userSalary;
         }
 
-        [HttpPut("EditUserSalary")]
-        public IActionResult EditUserSalary([FromBody] UserSalary userSalary)
+        [HttpPut("UserSalary")]
+        public IActionResult PutUserSalaryEF([FromBody] UserSalary userSalaryForUpdate)
         {
-            UserSalary? userSalaryDB = _userRepository.GetUserSalary(userSalary.UserId);
+            UserSalary? userSalaryDB = _userRepository.GetUserSalary(userSalaryForUpdate.UserId);
             if (userSalaryDB != null)
             {
-                userSalaryDB.UserId = userSalary.UserId;
-                userSalaryDB.Salary = userSalary.Salary;                
+                userSalaryDB.UserId = userSalaryForUpdate.UserId;
+                userSalaryDB.Salary = userSalaryForUpdate.Salary;                
                 if (_userRepository.SaveChanges())
                 {
-                    return Ok(userSalary);
+                    return Ok(userSalaryForUpdate);
                 }
             }
             throw new Exception("Failed to update User Salary");
         }
 
-        [HttpPost("AddUserSalary")]
-        public IActionResult AddUserSalary([FromBody] UserSalary userSalary)
+        [HttpPost("UserSalary")]
+        public IActionResult PostUserSalary([FromBody] UserSalary userSalaryToAdd)
         {
             UserSalary userSalaryDB = new UserSalary();
 
-            userSalaryDB.UserId=userSalary.UserId;
-            userSalaryDB.Salary=userSalary.Salary;
+            userSalaryDB.UserId= userSalaryToAdd.UserId;
+            userSalaryDB.Salary= userSalaryToAdd.Salary;
             _userRepository.AddEntity<UserSalary>(userSalaryDB);
             if (_userRepository.SaveChanges())
             {
-                return Ok(userSalary);
+                return Ok(userSalaryToAdd);
             }
             throw new Exception("Failed to add User Salary");
         }
 
-        [HttpDelete("DeleteUserSalary/{userid}")]
+        [HttpDelete("UserSalary/{userid}")]
         public IActionResult DeleteUserSalary(int userid)
         {
-            UserSalary? userSalaryDB = _userRepository.GetUserSalary(userid);
-            if (userSalaryDB != null)
+            UserSalary? userSalaryToDelete = _userRepository.GetUserSalary(userid);
+            if (userSalaryToDelete != null)
             {
-                _userRepository.RemoveEntity<UserSalary>(userSalaryDB);
+                _userRepository.RemoveEntity<UserSalary>(userSalaryToDelete);
                 if (_userRepository.SaveChanges())
                 {
                     return Ok();
