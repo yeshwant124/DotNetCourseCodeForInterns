@@ -53,7 +53,11 @@ namespace DotNetAPI.Controllers
                 WHERE UserId=" + userid;
             User user = _dapper.LoadDataSingle<User>(sql);
 
-            return user;                       
+            if(user != null)
+            {
+                return user;
+            }
+            throw new Exception("User not found");                                  
         }
 
         [HttpPut("EditUser")]
@@ -74,7 +78,7 @@ namespace DotNetAPI.Controllers
         }
 
         [HttpPost("AddUser")]
-        public IActionResult AddUser([FromBody]UserDTO user)
+        public IActionResult AddUser([FromBody]UserToAddDTO user)
         {
             string sql = "INSERT INTO [EmployeeInfo_YK].[TutorialAppSchema].[Users]([FirstName],[LastName],[Email],[Gender],[Active]) " +
                           " VALUES('" + user.FirstName + "','" + user.LastName + "','" + user.Email + "','" + user.Gender + "','" + user.Active + "')";                          
@@ -114,7 +118,12 @@ namespace DotNetAPI.Controllers
                             WHERE UserId=" + userid;
             UserSalary userSalary = _dapper.LoadDataSingle<UserSalary>(sql);
 
-            return userSalary;
+            if(userSalary != null)
+            {
+                return userSalary;
+            }
+            throw new Exception("User not found");
+            
         }
 
         [HttpPut("EditUserSalary")]
@@ -170,7 +179,10 @@ namespace DotNetAPI.Controllers
                             WHERE UserId=" + userid;
             UserJobInfo userJobInfo = _dapper.LoadDataSingle<UserJobInfo>(sql);
 
-            return userJobInfo;
+            if(userJobInfo != null) {
+                return userJobInfo;
+            }
+            throw new Exception("User not found");
         }
 
         [HttpPut("EditUserJobInfo")]

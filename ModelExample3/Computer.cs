@@ -9,7 +9,7 @@ namespace ModelExample3
 {
     public class Computer
     {
-        
+        [JsonPropertyName("computer_id")]
         public int ComputerId { get; set; }
         //nullable strings
 

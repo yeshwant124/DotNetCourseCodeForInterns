@@ -22,31 +22,31 @@ namespace DotNetAPI.Controllers
             _userRepository = userRepository;
         }
 
-        [HttpGet("GetUsers")]
+        [HttpGet("Users")]
         public IEnumerable<User> GetUsers()
         {
             IEnumerable<User> users = _userRepository.GetAllUsers();
             return users;                        
         }
 
-        [HttpGet("GetSingleUser/{userid}")]
+        [HttpGet("Users/{userid}")]
         public User GetUser(int userid)
         {
             User? user = _userRepository.GetUser(userid);
             return user;                   
         }
 
-        [HttpPut("EditUser")]
-        public IActionResult EditUser([FromBody]User user) 
+        [HttpPut("Users")]
+        public IActionResult PutUserEF([FromBody]User userToUpdate) 
         {
-            User? userDB = _userRepository.GetUser(user.UserId);
+            User? userDB = _userRepository.GetUser(userToUpdate.UserId);
             if (userDB != null)
             {
-                userDB.FirstName = user.FirstName;
-                userDB.LastName = user.LastName;
-                userDB.Email = user.Email;
-                userDB.Gender = user.Gender;
-                userDB.Active = user.Active;
+                userDB.FirstName = userToUpdate.FirstName;
+                userDB.LastName = userToUpdate.LastName;
+                userDB.Email = userToUpdate.Email;
+                userDB.Gender = userToUpdate.Gender;
+                userDB.Active = userToUpdate.Active;
                 if (_userRepository.SaveChanges())
                 {
                     return Ok();
@@ -55,10 +55,10 @@ namespace DotNetAPI.Controllers
             throw new Exception("Failed to update User");
         }
 
-        [HttpPost("AddUser")]
-        public IActionResult AddUser([FromBody]UserDTO user)
+        [HttpPost("Users")]
+        public IActionResult PostUserEF([FromBody]UserDTO userToAdd)
         {
-            User userDB = _mapper.Map<User>(user);            
+            User userDB = _mapper.Map<User>(userToAdd);            
            
            _userRepository.AddEntity<User>(userDB);
             if (_userRepository.SaveChanges())
@@ -68,8 +68,8 @@ namespace DotNetAPI.Controllers
             throw new Exception("Failed to add User");
         }
 
-        [HttpDelete("DeleteUser/{userid}")]
-        public IActionResult DeleteUser(int userid)
+        [HttpDelete("User/{userid}")]
+        public IActionResult DeleteUserEF(int userid)
         {
             User? userDB = _userRepository.GetUser(userid);
             if (userDB != null)
@@ -83,8 +83,8 @@ namespace DotNetAPI.Controllers
             throw new Exception("Failed to delete User");
         }
 
-        [HttpGet("GetUserSalaries")]
-        public IEnumerable<UserSalary> GetUserSalaries()
+        [HttpGet("UserSalary")]
+        public IEnumerable<UserSalary> GetUserSalariesEF()
         {
             IEnumerable<UserSalary> userSalaries = _userRepository.GetUserSalaries();
             return userSalaries;
@@ -114,7 +114,7 @@ namespace DotNetAPI.Controllers
         }
 
         [HttpPost("UserSalary")]
-        public IActionResult PostUserSalary([FromBody] UserSalary userSalaryToAdd)
+        public IActionResult PostUserSalaryEF([FromBody] UserSalary userSalaryToAdd)
         {
             UserSalary userSalaryDB = new UserSalary();
 
@@ -129,7 +129,7 @@ namespace DotNetAPI.Controllers
         }
 
         [HttpDelete("UserSalary/{userid}")]
-        public IActionResult DeleteUserSalary(int userid)
+        public IActionResult DeleteUserSalaryEF(int userid)
         {
             UserSalary? userSalaryToDelete = _userRepository.GetUserSalary(userid);
             if (userSalaryToDelete != null)
@@ -143,22 +143,22 @@ namespace DotNetAPI.Controllers
             throw new Exception("Failed to delete User Salary");
         }
 
-        [HttpGet("GetUsersJobInfo")]
+        [HttpGet("UserJobInfo")]
         public IEnumerable<UserJobInfo> GetUsersJobInfo()
         {
             IEnumerable<UserJobInfo> usersJobInfo = _userRepository.GetUsersJobInfo();
             return usersJobInfo;
         }
 
-        [HttpGet("GetUserJobInfo/{userid}")]
+        [HttpGet("UserJobInfo/{userid}")]
         public UserJobInfo GetUserJobInfo(int userid)
         {
             UserJobInfo? userJobInfo = _userRepository.GetUserJobInfo(userid);
             return userJobInfo;
         }
 
-        [HttpPut("EditUserJobInfo")]
-        public IActionResult EditUserJobInfo([FromBody] UserJobInfo userJobInfo)
+        [HttpPut("UserJobInfo")]
+        public IActionResult PutUserJobInfo([FromBody] UserJobInfo userJobInfo)
         {
             UserJobInfo? userJobInfoDB = _userRepository.GetUserJobInfo(userJobInfo.UserId);
             if (userJobInfoDB != null)
@@ -174,8 +174,8 @@ namespace DotNetAPI.Controllers
             throw new Exception("Failed to update User Job Info");
         }
 
-        [HttpPost("AddUserJobInfo")]
-        public IActionResult AddUserJobInfo([FromBody] UserJobInfo userJobInfo)
+        [HttpPost("UserJobInfo")]
+        public IActionResult PostUserJobInfo([FromBody] UserJobInfo userJobInfo)
         {
             UserJobInfo userJobInfoDB = new UserJobInfo();
 
@@ -191,8 +191,8 @@ namespace DotNetAPI.Controllers
             throw new Exception("Failed to add User Job Info");
         }
 
-        [HttpPost("DelteUserJobInfo")]
-        public IActionResult DelteUserJobInfo(int userid)
+        [HttpPost("UserJobInfo")]
+        public IActionResult DeleteUserJobInfo(int userid)
         {
             UserJobInfo? userJobInfoDB = _userRepository.GetUserJobInfo(userid);
             if (userJobInfoDB != null)

@@ -3,7 +3,7 @@ using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 using ModelExmaple.Data;
 using ModelExmaple.Models;
-
+using System.Data;
 
 namespace ModelExmaple
 {    
