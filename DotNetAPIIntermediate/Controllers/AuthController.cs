@@ -7,8 +7,12 @@ using Microsoft.AspNetCore.Mvc;
 using System.Data;
 using Microsoft.Data.SqlClient;
 using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
 using System.Security.Cryptography;
 using System.Text;
+using DotNetAPIIntermediate.Models;
+using System.Security.Claims;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace DotNetAPIIntermediate.Controllers
 {
@@ -29,18 +33,23 @@ namespace DotNetAPIIntermediate.Controllers
         [HttpPost("Register")]
         public IActionResult Register(UserForRegistrationDTO userForRegistration)
         {
-            if (userForRegistration.Password.Equals(userForRegistration.PasswordConfirm){
+            if (userForRegistration.Password.Equals(userForRegistration.PasswordConfirm)){
                 string sqlCheckIfUserExists = "Select Email From [TutorialAppSchema].[Auth] Where Email='" + userForRegistration.Email + "'";
                 IEnumerable<string> existingUsers = _dapper.LoadData<string>(sqlCheckIfUserExists);
                 if (existingUsers.Count() == 0)
                 {
                     byte[] passwordSalt = new byte[128 / 8];
-                    
+
+                    using (RandomNumberGenerator rng = RandomNumberGenerator.Create())
+                    {
+                        rng.GetNonZeroBytes(passwordSalt);
+                    }
+
                     byte[] passwordHash = GetPasswordHash(userForRegistration.Password, passwordSalt);
 
-                    string sqlAddAuth = @"Insert Into [TutorialAppSchema].[Auth]([Email],[PasswordHash],[PasswordSalt]  " +
+                    string sqlAddAuth = @"Insert Into [TutorialAppSchema].[Auth]([Email],[PasswordHash],[PasswordSalt])  " +
                         "Values('" + userForRegistration.Email + "',@PasswordHash,@PasswordSalt);";
-
+                    
                     List<SqlParameter> sqlParameters = new List<SqlParameter>();
 
                     SqlParameter passwordSaltParameter = new SqlParameter("@PasswordSalt", SqlDbType.VarBinary);
@@ -53,12 +62,20 @@ namespace DotNetAPIIntermediate.Controllers
 
                     if(_dapper.ExecuteSqlWithParameters(sqlAddAuth, sqlParameters))
                     {
-                        return Ok();
+                        string sqlAddUser = "INSERT INTO [EmployeeInfo_YK].[TutorialAppSchema].[Users]([FirstName],[LastName],[Email],[Gender],[Active]) " +
+                        " VALUES('" + userForRegistration.FirstName + "','" + userForRegistration.LastName + "','" + userForRegistration.Email + "','" 
+                        + userForRegistration.Gender + "',1)";
+
+                        if (_dapper.ExecuteSql(sqlAddUser))
+                        {
+                            return Ok();
+                        }
+                        throw new Exception("Failed to add user.");
                     }
                     throw new Exception("Failed to register user.");
                 }
                 throw new Exception("User with this email already exists!!!");
-            }                
+            }
             throw new Exception("Passwords do not match!!!");
         }
 
@@ -69,23 +86,29 @@ namespace DotNetAPIIntermediate.Controllers
             string sqlForHashAndSalt = @"SELECT [PasswordHash],[PasswordSalt] FROM[TutorialAppSchema].[Auth] WHERE Email='" + userForLogin.Email + "'";
             UserForLoginConfirmationDTO userForLoginConfirmation = _dapper.LoadDataSingle<UserForLoginConfirmationDTO>(sqlForHashAndSalt);
 
-            
-            byte[] passwordSalt = new byte[128 / 8];
             byte[] passwordHash = GetPasswordHash(userForLogin.Password, userForLoginConfirmation.PasswordSalt);
 
-            string sqlCheckIfUserexists = @"SELECT [PasswordHash],[PasswordSalt] FROM[TutorialAppSchema].[Auth] WHERE Email='" + userForLogin.Email + "'" +
-                " AND [PasswordHash]='" + passwordHash + "' AND [PasswordSalt]='" + passwordSalt + "';";
-            _dapper.LoadDataSingle<>
+            //if(passwordHash == userForLoginConfirmation.PasswordHash)           
+            
 
+            for(int index = 0; index < passwordHash.Length;index++)
+            {
+                if (passwordHash[index] != userForLoginConfirmation.PasswordHash[index])
+                {
+                    return StatusCode(401,"Incorrect Password");
+                }
+            }    
+            
             return Ok();
+
+            //return Ok(new Dictionaey<string, string>(
+            //{
+            //    {"token", CreateToken(userId,) }
+            //});
         }
 
         private byte[] GetPasswordHash(string password, byte[] passwordSalt) 
         {            
-            using (RandomNumberGenerator rng = RandomNumberGenerator.Create())
-            {
-                rng.GetNonZeroBytes(passwordSalt);
-            }
             string passwordSaltPlusString = _config.GetSection("AppSettings:PasswordKey").Value + Convert.ToBase64String(passwordSalt);
 
             byte[] passwordHash = KeyDerivation.Pbkdf2(
@@ -97,6 +120,31 @@ namespace DotNetAPIIntermediate.Controllers
             );
 
             return passwordHash;
+        }
+
+        private string CreateToken(int userId)
+        {
+            Claim[] claims = new Claim[]
+            {
+                new Claim("userId",userId.ToString())
+            };
+
+            SymmetricSecurityKey? tokenKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config.GetSection("AppSettings:TokenKey").Value));
+
+            SigningCredentials credentials = new SigningCredentials(tokenKey,SecurityAlgorithms.HmacSha512Signature);
+
+            SecurityTokenDescriptor descriptor = new SecurityTokenDescriptor()
+            {
+                Subject = new ClaimsIdentity(claims),
+                SigningCredentials = credentials,
+                Expires = DateTime.Now.AddDays(1),
+            };
+
+            JwtSecurityTokenHandler  tokenHandler = new JwtSecurityTokenHandler();
+
+            SecurityToken token = tokenHandler.CreateToken(descriptor);
+
+            return tokenHandler.WriteToken(token);
         }
     }
 }

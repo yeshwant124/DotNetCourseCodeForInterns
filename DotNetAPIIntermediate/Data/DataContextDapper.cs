@@ -48,9 +48,9 @@ namespace DotNetAPIIntermediate.Data
             connection.Open();
 
             commandWithParams.Connection = connection;
-            connection.Close();
-
+            
             int rowsAffected = commandWithParams.ExecuteNonQuery();
+            connection.Close();
             return rowsAffected > 0;
         }
     }

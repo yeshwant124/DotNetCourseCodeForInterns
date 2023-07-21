@@ -13,7 +13,7 @@ namespace DotNetAPIIntermediate.Data
         {
             _entityFramework = new DataContextEF(config);
 
-            IMapper _mapper = new Mapper(new MapperConfiguration(cfg => cfg.CreateMap<UserDTO, User>()));
+            IMapper _mapper = new Mapper(new MapperConfiguration(cfg => cfg.CreateMap<UserToAddDTO, User>()));
         }
 
         public bool SaveChanges()
@@ -26,7 +26,7 @@ namespace DotNetAPIIntermediate.Data
             if(entityToAdd != null)
             {
                 _entityFramework.Add(entityToAdd);                
-            }              
+            }            
         }
 
         public void RemoveEntity<T>(T entityToRemove)

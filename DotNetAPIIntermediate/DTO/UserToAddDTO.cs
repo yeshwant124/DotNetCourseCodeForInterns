@@ -1,6 +1,6 @@
 ﻿namespace DotNetAPIIntermediate.DTO
 {
-    public partial class UserDTO
+    public partial class UserToAddDTO
     {
         public string FirstName { get; set; }
 
@@ -12,7 +12,7 @@
 
         public bool Active { get; set; }
 
-        public UserDTO() { 
+        public UserToAddDTO() { 
             if(FirstName == null) FirstName = string.Empty;
             
             if(LastName == null) LastName = string.Empty; 

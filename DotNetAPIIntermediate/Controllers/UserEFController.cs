@@ -18,7 +18,12 @@ namespace DotNetAPI.Controllers
 
         public UserEFController(IConfiguration config, IUserRepository userRepository)
         {
-            _mapper = new Mapper(new MapperConfiguration(cfg => cfg.CreateMap<UserDTO, User>()));
+            _mapper = new Mapper(new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<UserToAddDTO, User>();
+                cfg.CreateMap<UserSalary, UserSalary>();
+                cfg.CreateMap<UserJobInfo, UserJobInfo>();
+            }));
             _userRepository = userRepository;
         }
 
@@ -56,7 +61,7 @@ namespace DotNetAPI.Controllers
         }
 
         [HttpPost("Users")]
-        public IActionResult PostUserEF([FromBody]UserDTO userToAdd)
+        public IActionResult PostUserEF([FromBody]UserToAddDTO userToAdd)
         {
             User userDB = _mapper.Map<User>(userToAdd);            
            
@@ -68,7 +73,7 @@ namespace DotNetAPI.Controllers
             throw new Exception("Failed to add User");
         }
 
-        [HttpDelete("User/{userid}")]
+        [HttpDelete("User")]
         public IActionResult DeleteUserEF(int userid)
         {
             User? userDB = _userRepository.GetUser(userid);
@@ -128,7 +133,7 @@ namespace DotNetAPI.Controllers
             throw new Exception("Failed to add User Salary");
         }
 
-        [HttpDelete("UserSalary/{userid}")]
+        [HttpDelete("UserSalary")]
         public IActionResult DeleteUserSalaryEF(int userid)
         {
             UserSalary? userSalaryToDelete = _userRepository.GetUserSalary(userid);
@@ -191,7 +196,7 @@ namespace DotNetAPI.Controllers
             throw new Exception("Failed to add User Job Info");
         }
 
-        [HttpPost("UserJobInfo")]
+        [HttpDelete("UserJobInfo")]
         public IActionResult DeleteUserJobInfo(int userid)
         {
             UserJobInfo? userJobInfoDB = _userRepository.GetUserJobInfo(userid);

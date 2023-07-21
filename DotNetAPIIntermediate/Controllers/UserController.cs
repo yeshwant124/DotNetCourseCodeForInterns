@@ -74,10 +74,11 @@ namespace DotNetAPI.Controllers
         }
 
         [HttpPost("AddUser")]
-        public IActionResult AddUser([FromBody]UserDTO user)
+        public IActionResult AddUser([FromBody]UserToAddDTO user)
         {
             string sql = "INSERT INTO [EmployeeInfo_YK].[TutorialAppSchema].[Users]([FirstName],[LastName],[Email],[Gender],[Active]) " +
-                          " VALUES('" + user.FirstName + "','" + user.LastName + "','" + user.Email + "','" + user.Gender + "','" + user.Active + "')";                          
+                          " VALUES('" + user.FirstName + "','" + user.LastName + "','" + user.Email + "','" + user.Gender + "','" + user.Active + "')";
+            Console.WriteLine(sql);
 
             if (_dapper.ExecuteSql(sql))
             {

@@ -7,7 +7,6 @@ namespace DotNetAPIIntermediate.Data
     {
         private readonly IConfiguration _config;
 
-
         public DataContextEF(IConfiguration config)
         {
             _config = config;
